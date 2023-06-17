@@ -61,6 +61,8 @@ func FindAllUsers(query bson.M, field bson.M, databse, col string) ([]models.Use
 	}
 	return users, nil
 }
+
+// jfkdjfksdjf
 func DeleteUser(query bson.M, database, col string) error {
 	collection := Client.Database(database).Collection(col)
 	_, err := collection.DeleteOne(context.Background(), query)
