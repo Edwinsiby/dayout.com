@@ -21,31 +21,6 @@ var Cancel context.CancelFunc
 var UserList []models.User
 var err error
 
-// func close(client *mongo.Client, ctx context.Context,
-// 	cancel context.CancelFunc) {
-// 	defer cancel()
-// 	defer func() {
-
-//			if err := client.Disconnect(ctx); err != nil {
-//				panic(err)
-//			}
-//		}()
-//	}
-//
-// client, Ctx, cancel, err = connect("mongodb://localhost:27017")
-//
-//	if err != nil {
-//		panic(err)
-//	}
-
-// func ping(client *mongo.Client, ctx context.Context) error {
-// 	if err = client.Ping(ctx, readpref.Primary()); err != nil {
-// 		return err
-// 	}
-// 	fmt.Println("connected successfully")
-// 	return nil
-// }
-
 func InsertOne(dataBase, col string, doc models.User) (*mongo.InsertOneResult, error) {
 	collection := Client.Database(dataBase).Collection(col)
 	result, err := collection.InsertOne(Ctx, doc)
