@@ -38,12 +38,14 @@ func SignupPost(c *gin.Context) {
 	userName := c.Request.FormValue("UserName")
 	userEmail := c.Request.FormValue("Emailid")
 	password := c.Request.FormValue("Password")
+
 	user := models.User{Role: "user", Name: userName, Email: userEmail, Password: password}
 	_, err := DB.InsertOne("sample", "user", user)
 	if err != nil {
 		panic(err)
+	} else {
+		c.Redirect(http.StatusFound, "/login")
 	}
-	c.Redirect(http.StatusFound, "/login")
 
 }
 

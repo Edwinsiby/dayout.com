@@ -1,6 +1,7 @@
 package Handlers
 
 import (
+	"errors"
 	"fmt"
 	"main/DB"
 	"main/helpers"
@@ -10,6 +11,18 @@ import (
 	"github.com/gin-gonic/gin"
 	"gopkg.in/mgo.v2/bson"
 )
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
+	if name == "" {
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	message := fmt.Sprintf("Hi hello : %s", name)
+	// message := fmt.Sprint("Hi hello %s")
+	return message, nil
+}
 
 func AdminHandler(c *gin.Context) {
 	c.Header("Cache-Control", "no-cache,no-store,must-revalidate")

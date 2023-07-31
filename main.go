@@ -1,16 +1,11 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"main/DB"
 	"main/Handlers"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func main() {
@@ -19,8 +14,8 @@ func main() {
 		fmt.Println("Can't load env")
 	}
 
-	DB.Ctx, DB.Cancel = context.WithTimeout(context.Background(), 30*time.Second)
-	DB.Client, err = mongo.Connect(DB.Ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	// DB.Ctx, DB.Cancel = context.WithTimeout(context.Background(), 30*time.Second)
+	// DB.Client, err = mongo.Connect(DB.Ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
 	// DB.Db, _ = gorm.Open(postgres.Open(os.Getenv("DBS")), &gorm.Config{})
 	// DB.Db.AutoMigrate(&models.User{})
 	router := gin.New()
@@ -43,5 +38,5 @@ func main() {
 	router.POST("/create", Handlers.CreateHandler)
 	router.POST("/search", Handlers.SearchHandler)
 
-	router.Run(":8080")
+	router.Run(":8081")
 }
