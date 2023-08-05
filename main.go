@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+
 	err := godotenv.Load(".env")
 	if err != nil {
 		fmt.Println("Can't load env")
@@ -35,4 +36,5 @@ func main() {
 	router.POST("/search", Handlers.SearchHandler)
 
 	router.Run(":8080")
+	fmt.Println("server running")
 }
