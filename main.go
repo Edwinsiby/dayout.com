@@ -14,7 +14,7 @@ func main() {
 		fmt.Println("Can't load env")
 	}
 
-	router := gin.New()
+	router := gin.Default()
 	router.LoadHTMLGlob("templates/*.html")
 	router.Static("/static", "./static")
 
@@ -34,5 +34,5 @@ func main() {
 	router.POST("/create", Handlers.CreateHandler)
 	router.POST("/search", Handlers.SearchHandler)
 
-	router.Run(":8081")
+	router.Run(":8080")
 }
