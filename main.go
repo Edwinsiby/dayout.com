@@ -14,10 +14,6 @@ func main() {
 		fmt.Println("Can't load env")
 	}
 
-	// DB.Ctx, DB.Cancel = context.WithTimeout(context.Background(), 30*time.Second)
-	// DB.Client, err = mongo.Connect(DB.Ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
-	// DB.Db, _ = gorm.Open(postgres.Open(os.Getenv("DBS")), &gorm.Config{})
-	// DB.Db.AutoMigrate(&models.User{})
 	router := gin.New()
 	router.LoadHTMLGlob("templates/*.html")
 	router.Static("/static", "./static")
