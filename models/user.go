@@ -8,5 +8,5 @@ type User struct {
 }
 type Invalid struct {
 	Errpass string
-	Errmail string `json:"email"`
+	Errmail string
 }
